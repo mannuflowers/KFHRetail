@@ -35,7 +35,7 @@ class AccountsCell: UICollectionViewCell {
         backgroundColor = .white
         flagImage.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         addSubview(flagImage)
-        flagImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        flagImage.widthAnchor.constraint(equalToConstant: 150).isActive = true //here
         flagImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
         //flagImage.backgroundColor = .purple
         flagImage.anchor(top: self.topAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 6, paddingBottom: 100, paddingRight: 0, width: 50, height: 45)
