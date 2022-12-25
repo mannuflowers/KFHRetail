@@ -35,7 +35,7 @@ class myAccountsController: UICollectionViewController, UICollectionViewDelegate
         whiteView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         whiteView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        vc.view.backgroundColor = .yellow
+        vc.view.backgroundColor = .white
         vc.view.frame = CGRect(x: -305, y: 0, width: 305, height: 966)
         let mainWindow = UIApplication.shared.keyWindow
         mainWindow?.addSubview(vc.view)
@@ -49,16 +49,31 @@ class myAccountsController: UICollectionViewController, UICollectionViewDelegate
 
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
         view.addGestureRecognizer(panGesture)
+        setupDarkCoverView()
     }
     
     let vc = SlideOutMenu()
     var isMenuOpened = false
+    let darkCoverView = UIView()
+    
+    fileprivate func setupDarkCoverView() {
+        darkCoverView.alpha = 0
+        let mainWindow = UIApplication.shared.keyWindow
+        darkCoverView.isUserInteractionEnabled = false
+        mainWindow?.addSubview(darkCoverView)
+        darkCoverView.frame = mainWindow?.frame ?? .zero
+        darkCoverView.backgroundColor = UIColor(white: 0, alpha: 0.7)
+    }
 
     fileprivate func performAnimations(transform: CGAffineTransform) {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             //self.view.transform = transform
             self.vc.view.transform = transform
             self.navigationController?.view.transform = transform
+            self.darkCoverView.transform = transform
+            
+            self.darkCoverView.alpha = transform == .identity ? 0:1 
+            
         })
     }
     
@@ -72,6 +87,7 @@ class myAccountsController: UICollectionViewController, UICollectionViewDelegate
         isMenuOpened = false
         print("Hiding menu...")
         performAnimations(transform: .identity)
+        
     }
 
     @objc func handlePanGesture(gesture: UIPanGestureRecognizer) {
@@ -88,6 +104,8 @@ class myAccountsController: UICollectionViewController, UICollectionViewDelegate
             x = max(0, x)
             vc.view.transform = CGAffineTransform(translationX: x, y: 0)
             navigationController?.view.transform = CGAffineTransform(translationX: x, y: 0)
+            darkCoverView.transform = CGAffineTransform(translationX: x, y: 0)
+            darkCoverView.alpha = x / 305
             
         } else if gesture.state == .ended {
             
