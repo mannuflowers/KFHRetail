@@ -35,7 +35,7 @@ class MenuHeader: UIView {
         lastLoginLabel.attributedText = NSMutableAttributedString(string: "Last Login 11/04/2021  11:41:57", attributes: [NSAttributedString.Key.kern: 0.07, NSAttributedString.Key.paragraphStyle: paragraphStyle])
         lastLoginLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        
+       
         let arrangedSubviews = [nameLabel,lastLoginLabel,UIView()]
         
         let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
@@ -67,6 +67,12 @@ class MenuHeader: UIView {
         logo.widthAnchor.constraint(equalToConstant: 48).isActive = true
         logo.anchor(top: self.topAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 16, paddingBottom: 68, paddingRight: 241, width: 48, height: 48)
         
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "Search In Menu"
+        addSubview(searchBar)
+        searchBar.anchor(top: logo.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 23, paddingLeft: 10, paddingBottom: 0, paddingRight: 24, width: 285, height: 36)
+        searchBar.layer.borderWidth = 1
+        searchBar.layer.borderColor = UIColor(red: 255/255, green: 253/255, blue: 247/255, alpha: 1.0).cgColor
       
         
     }

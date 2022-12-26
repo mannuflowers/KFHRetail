@@ -46,23 +46,20 @@ class SlideOutMenu: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "cellId")
-       // cell.backgroundColor = UIColor(red: 0.357, green: 0.561, blue: 0.42, alpha: 1)
+        let cell = MenuItemCell(style: .default, reuseIdentifier: "cellId")
         let menuItem = menuItems[indexPath.row]
-        let greenLabel = UILabel()
-        let text = UITextView()
-        greenLabel.frame = CGRect(x: 0, y: 0, width: 72, height: 72)
-        greenLabel.layer.backgroundColor = UIColor(red: 0.357, green: 0.561, blue: 0.42, alpha: 1).cgColor
-        text.text = menuItem.title
-        text.textColor = .white
-        text.font = UIFont(name: "Lato-Regular", size: 12)
-        text.textAlignment = .center
-        
-       
-        //greenLabel.layoutMargins = UIEdgeInsets(top: <#T##CGFloat#>, left: <#T##CGFloat#>, bottom: <#T##CGFloat#>, right: <#T##CGFloat#>)
-        cell.addSubview(greenLabel)
-        cell.textLabel?.text = menuItem.title
-        cell.imageView?.image = menuItem.icon
+//        let greenLabel = UILabel()
+//        let text = UITextView()
+//        greenLabel.frame = CGRect(x: 0, y: 0, width: 72, height: 72)
+//        text.text = menuItem.title
+//        text.textColor = .white
+//        text.font = UIFont(name: "Lato-Regular", size: 12)
+//        text.textAlignment = .center
+//        cell.addSubview(greenLabel)
+        cell.iconImageView.image = menuItem.icon
+       // cell.titleLabel.text = menuItem.title
+//        cell.textLabel?.text = menuItem.title
+//        cell.imageView?.image = menuItem.icon
         return cell
     }
     
