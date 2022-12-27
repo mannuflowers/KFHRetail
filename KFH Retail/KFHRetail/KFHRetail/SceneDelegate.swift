@@ -24,7 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UINavigationController(rootViewController: DetailedStatementController())
+            //window.rootViewController = UINavigationController(rootViewController: DetailedStatementController())
+            window.rootViewController = UINavigationController(rootViewController: myAccountsController())
             //window.rootViewController = CardsController()
             //window.rootViewController = UINavigationController(rootViewController: CardsController())
             self.window = window

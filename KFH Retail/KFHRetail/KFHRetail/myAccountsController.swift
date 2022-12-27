@@ -65,7 +65,7 @@ class myAccountsController: UICollectionViewController, UICollectionViewDelegate
         darkCoverView.backgroundColor = UIColor(white: 0, alpha: 0.7)
     }
 
-    fileprivate func performAnimations(transform: CGAffineTransform) {
+    @objc func performAnimations(transform: CGAffineTransform) {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             //self.view.transform = transform
             self.vc.view.transform = transform

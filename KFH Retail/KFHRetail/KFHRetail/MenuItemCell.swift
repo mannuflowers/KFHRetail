@@ -37,7 +37,7 @@ class MenuItemCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .brown
+        backgroundColor = .white
         
         let stackView = UIStackView(arrangedSubviews: [iconImageView,titleLabel])
         stackView.frame = CGRect(x: 0, y: 0, width: 80, height: 72)

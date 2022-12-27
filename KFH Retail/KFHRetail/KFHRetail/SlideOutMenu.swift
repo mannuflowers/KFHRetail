@@ -57,7 +57,7 @@ class SlideOutMenu: UITableViewController {
 //        text.textAlignment = .center
 //        cell.addSubview(greenLabel)
         cell.iconImageView.image = menuItem.icon
-       // cell.titleLabel.text = menuItem.title
+        cell.titleLabel.text = menuItem.title
 //        cell.textLabel?.text = menuItem.title
 //        cell.imageView?.image = menuItem.icon
         return cell
@@ -71,6 +71,13 @@ class SlideOutMenu: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 150
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let slidingController = UIApplication.shared.keyWindow?.rootViewController as? myAccountsController
+        slidingController?.handleHomeButton()
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

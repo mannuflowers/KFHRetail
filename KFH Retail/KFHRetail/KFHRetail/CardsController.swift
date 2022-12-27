@@ -33,6 +33,7 @@ class CardsController: UICollectionViewController, UICollectionViewDelegateFlowL
         whiteView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         
+        
         view.backgroundColor = .systemPink
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "home3").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleHomeButton))
         
@@ -40,9 +41,31 @@ class CardsController: UICollectionViewController, UICollectionViewDelegateFlowL
         
     }
 
-@objc func handleHamburgerButton() {
-    print("HamburgerButton button pressed")
+    @objc func handleHamburgerButton() {
+        print("HamburgerButton button pressed")
+                                            
+    //let sheet = UIAlertController(title: "", message: "" ,preferredStyle: .actionSheet)
+    //let sheet2 = uial
+    let sheet = UIAlertController()
+    let action1 = UIAlertAction(title: "Transfer to Card", style: .default) { (action) in
+        print("THIS IS ACTION 1")
+    }
 
+    let action2 = UIAlertAction(title: "Report Lost Card", style: .default) { (action) in
+            print("THIS IS ACTION 2")
+        }
+    let action3 = UIAlertAction(title: "View PIN", style: .default) { (action) in
+            print("THIS IS ACTION 3")
+        }
+    
+        
+    sheet.addAction(action1)
+    sheet.addAction(action2)
+    sheet.addAction(action3)
+    sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+    present(sheet, animated: true, completion: nil)
+                                            
 }
 
 @objc func handleHomeButton() {
