@@ -19,8 +19,8 @@ class TableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionView
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 50, height: 52)
-        layout.sectionInset = UIEdgeInsets(top: 0,left: 7,bottom: 3,right: 7)
+        layout.itemSize = CGSize(width: 52, height: 30)
+        layout.sectionInset = UIEdgeInsets(top: 0,left: 15,bottom: 0,right: 15)
         
         
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -31,7 +31,6 @@ class TableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionView
         collectionView.showsHorizontalScrollIndicator = false
         
         collectionView.register(myCollectionViewCell.self, forCellWithReuseIdentifier: myCollectionViewCell.identifier)
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -63,7 +62,7 @@ class TableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionView
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
+        
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return models.count
     }

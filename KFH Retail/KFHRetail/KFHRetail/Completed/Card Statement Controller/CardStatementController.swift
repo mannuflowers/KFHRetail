@@ -154,17 +154,17 @@ class CardStatementController: BaseViewController, UICollectionViewDelegate {
     
     let headerId = "headerId"
     private var cellId = "cellId"
-   
+    
     
     lazy var collectionView: UICollectionView = {
-       let layout = UICollectionViewFlowLayout()
-       // let cvc = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let layout = UICollectionViewFlowLayout()
+        // let cvc = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 0 // this is for spacing between cells
         layout.itemSize = CGSize(width: view.frame.width, height: view.frame.height) //this is for cell size
         let cvc = UICollectionView(frame: CGRect(origin: CGPointMake(0, 100), size: CGSize(width: view.frame.width, height: view.frame.height - 100)), collectionViewLayout: layout)
         return cvc
-   }()
+    }()
     
     override func viewDidLoad() {
         
@@ -175,8 +175,8 @@ class CardStatementController: BaseViewController, UICollectionViewDelegate {
         collectionView.frame = CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.height - 100)
         contentView.addSubview(collectionView)
         collectionView.backgroundColor = .backgroundGray
-        setNavigationBarItems(title: "Card Statement", leftNavigationItem: UIBarButtonItem(image: #imageLiteral(resourceName: "Vector (7)").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleHamburgerButton)), rightNavigationItem: UIBarButtonItem(image: #imageLiteral(resourceName: "Light").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleHomeButton)))
-
+        setNavigationBarItems(title: "Card Statement", leftNavigationItem: "Vector (7)", rightNavigationItem: "Light")
+        
         
         let stackView = UIStackView(arrangedSubviews: [availableLimitLabel,monthlyLimitLabel,lastPaymentDateLabel,lastPaymentAmountLabel,lastStatementDateLabel,lastBalanceLabel])
         
@@ -196,34 +196,50 @@ class CardStatementController: BaseViewController, UICollectionViewDelegate {
         view.addSubview(statementStackView)
         statementStackView.anchor(top: dateDesStackView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 136)
     }
+}
     
-
-    @objc func handleHamburgerButton() {
-        print("HamburgerButton button pressed")
+    func createaMiniStatementStackView(date: String,Kind: String,Cost: String,CostColor:UIColor)->UIStackView{
         
-    }
-
-    @objc func handleHomeButton() {
-        print("Hiding menu...")
+        let dateLabel = UILabel()
+        let KindLabel = UILabel()
+        let CostLabel = UILabel()
+        
+        dateLabel.text = date
+        dateLabel.font = UIFont(name: "Lato-Bold", size: 16)
+        KindLabel.text = Kind
+        KindLabel.font = UIFont(name: "Lato-Regular", size: 15)
+        KindLabel.textColor = UIColor.someGray
+        CostLabel.text = Cost
+        CostLabel.font = UIFont(name: "Lato-Bold", size: 16)
+        CostLabel.textAlignment = .right
+        CostLabel.textColor = CostColor
+        
+        let stackView = UIStackView(arrangedSubviews: [dateLabel,SpacerView(space: 157),CostLabel,SpacerView(space: 10)])
+        stackView.axis = .horizontal
+        stackView.backgroundColor = .white
+        
+        let TotalstackView = UIStackView(arrangedSubviews: [SpacerView(space: 2),stackView,SpacerView(space: 2),KindLabel])
+        TotalstackView.axis = .vertical
+        TotalstackView.distribution = .fillEqually
+        TotalstackView.backgroundColor = .white
+        return TotalstackView
     }
     
-}
-
 func handleMakeStackView(title:String,title1:String,color:UIColor)->UIStackView {
-    let stackViewElement1 = UILabel()
-    let stackViewElement2 = UILabel()
-    stackViewElement1.text = title
-    stackViewElement1.textColor = color
-    stackViewElement1.font = UIFont(name: "Lato-Bold", size: 17)
-    stackViewElement1.textAlignment = .center
-    stackViewElement2.text = title1
-    stackViewElement2.textColor = color
-    stackViewElement2.font = UIFont(name: "Lato-Regular", size: 16)
-    stackViewElement2.textAlignment = .center
-    let stackView = UIStackView(arrangedSubviews: [SpacerView(space: 4),stackViewElement1,SpacerView(space: 5),stackViewElement2,SpacerView(space: 4)])
-    stackView.axis = .vertical
-    return stackView
-}
+     let stackViewElement1 = UILabel()
+     let stackViewElement2 = UILabel()
+     stackViewElement1.text = title
+     stackViewElement1.textColor = color
+     stackViewElement1.font = UIFont(name: "Lato-Bold", size: 17)
+     stackViewElement1.textAlignment = .center
+     stackViewElement2.text = title1
+     stackViewElement2.textColor = color
+     stackViewElement2.font = UIFont(name: "Lato-Regular", size: 16)
+     stackViewElement2.textAlignment = .center
+     let stackView = UIStackView(arrangedSubviews: [SpacerView(space: 4),stackViewElement1,SpacerView(space: 5),stackViewElement2,SpacerView(space: 4)])
+     stackView.axis = .vertical
+     return stackView
+ }
 
 extension CardStatementController: UICollectionViewDelegateFlowLayout {
     
@@ -238,31 +254,3 @@ extension CardStatementController: UICollectionViewDelegateFlowLayout {
         return header
     }
 }
-
-func createaMiniStatementStackView(date: String,Kind: String,Cost: String,CostColor:UIColor)->UIStackView{
-    
-    let dateLabel = UILabel()
-    let KindLabel = UILabel()
-    let CostLabel = UILabel()
-
-    dateLabel.text = date
-    dateLabel.font = UIFont(name: "Lato-Bold", size: 16)
-    KindLabel.text = Kind
-    KindLabel.font = UIFont(name: "Lato-Regular", size: 15)
-    KindLabel.textColor = UIColor.someGray
-    CostLabel.text = Cost
-    CostLabel.font = UIFont(name: "Lato-Bold", size: 16)
-    CostLabel.textAlignment = .right
-    CostLabel.textColor = CostColor
-    
-    let stackView = UIStackView(arrangedSubviews: [dateLabel,SpacerView(space: 157),CostLabel,SpacerView(space: 10)])
-    stackView.axis = .horizontal
-    stackView.backgroundColor = .white
-    
-    let TotalstackView = UIStackView(arrangedSubviews: [SpacerView(space: 2),stackView,SpacerView(space: 2),KindLabel])
-    TotalstackView.axis = .vertical
-    TotalstackView.distribution = .fillEqually
-    TotalstackView.backgroundColor = .white
-    return TotalstackView
-}
-

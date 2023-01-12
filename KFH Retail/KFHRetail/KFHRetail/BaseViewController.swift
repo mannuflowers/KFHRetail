@@ -22,13 +22,9 @@ class BaseViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
-//private var navigationTitle = ""
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = .yellow
         //whiteView.topAnchor.constraint(equalTo: view.frame.topAnchor).isActive = true
         
         
@@ -39,17 +35,24 @@ class BaseViewController: UIViewController {
         
         whiteView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         whiteView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        contentView.addSubview(whiteView)
         
         
     }
-
-    open func setNavigationBarItems(title: String,leftNavigationItem: UIBarButtonItem,rightNavigationItem: UIBarButtonItem){
+    
+    open func setNavigationBarItems(title: String,leftNavigationItem: String,rightNavigationItem: String){
                 
         navigationItem.title = title
        
-        navigationItem.leftBarButtonItem = leftNavigationItem
-        navigationItem.rightBarButtonItem = rightNavigationItem
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: leftNavigationItem)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleHamburgerButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: rightNavigationItem)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleHomeButton))
+    }
+    
+    @objc open func handleHamburgerButton() {
+        print("HamburgerButton button pressed")
+    }
+    
+    @objc open func handleHomeButton() {
+        print("Hiding menu...")
     }
 }
 

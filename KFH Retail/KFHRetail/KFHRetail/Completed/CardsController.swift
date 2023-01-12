@@ -47,15 +47,12 @@ class CardsController: BaseViewController, UICollectionViewDelegate, UICollectio
         collectionView.dataSource = self
         collectionView.frame = CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.height - 100)
         contentView.addSubview(collectionView)
-        
-        self.setNavigationBarItems(title: "My Cards", leftNavigationItem: UIBarButtonItem(image: #imageLiteral(resourceName: "HamburgerButton").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleHamburgerButton)), rightNavigationItem: UIBarButtonItem(image: #imageLiteral(resourceName: "home3").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleHomeButton)))
-        
-        
+        self.setNavigationBarItems(title: "My Cards", leftNavigationItem: "HamburgerButton", rightNavigationItem: "home3")
     }
     
     
     
-    @objc func handleHamburgerButton() {
+    override func handleHamburgerButton() {
         print("HamburgerButton button pressed")
         
         let sheet = UIAlertController()
@@ -80,10 +77,6 @@ class CardsController: BaseViewController, UICollectionViewDelegate, UICollectio
         
         present(sheet, animated: true, completion: nil)
         
-    }
-    
-    @objc func handleHomeButton() {
-        print("house button is being pressed")
     }
     
     

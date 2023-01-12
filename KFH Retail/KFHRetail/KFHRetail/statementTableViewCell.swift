@@ -20,7 +20,7 @@ class statementTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColle
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 375, height: 97)
-        layout.sectionInset = UIEdgeInsets(top: 3,left: 3,bottom: 3,right: 3)
+        layout.sectionInset = UIEdgeInsets(top: 0,left: 3,bottom: 3,right: 3)
         
         
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -29,8 +29,9 @@ class statementTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColle
         
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-        
+
         collectionView.register(statementCollectionViewCell.self, forCellWithReuseIdentifier: statementCollectionViewCell.identifier)
+        collectionView.register(StatementHeaderCollectionView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: StatementHeaderCollectionView.identifier)
 
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -64,16 +65,29 @@ class statementTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColle
         return 1
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let View = StatementHeader()
-        return View
-        
-    }
-    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let View = UIView()
+//        View.backgroundColor = .floroGreen
+//        View.frame = CGRect(x: 0, y: 0, width: 375, height: 56)
+//        return View
+//        
+//    }
+//
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 56
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: StatementHeaderCollectionView.identifier, for: indexPath) as! StatementHeaderCollectionView
+        
+        header.configure()
+        return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 52)
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return models.count

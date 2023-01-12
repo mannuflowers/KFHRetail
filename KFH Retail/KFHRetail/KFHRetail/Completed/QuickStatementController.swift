@@ -159,22 +159,11 @@ class QuickStatementController: BaseViewController {
         
         view.addSubview(miniStatementStackView)
         miniStatementStackView.anchor(top: dateDesStackView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 380)
-        
-        
-        setNavigationBarItems(title: "••••••••8901", leftNavigationItem: UIBarButtonItem(image: #imageLiteral(resourceName: "Vector (7)").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleHamburgerButton)), rightNavigationItem: UIBarButtonItem(image: #imageLiteral(resourceName: "Light").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleHamburgerButton)))
+        setNavigationBarItems(title: "••••••••8901", leftNavigationItem: "Vector (7)", rightNavigationItem: "Light")
                 self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.black]
         
         
         
-    }
-
-    
-    @objc open func handleHamburgerButton() {
-        print("HamburgerButton button pressed")
-    }
-    
-    @objc open func handleHomeButton() {
-        print("Hiding menu...")
     }
 
 }

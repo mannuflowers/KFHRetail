@@ -182,23 +182,11 @@ class DetailedStatementController: BaseViewController, UICollectionViewDelegateF
         
         view.addSubview(SubmitLabel)
         SubmitLabel.anchor(top: stackView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 30, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 50)
-
         
-        setNavigationBarItems(title: "Detailed Statement", leftNavigationItem: UIBarButtonItem(image: #imageLiteral(resourceName: "HamburgerButton").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleHamburgerButton)), rightNavigationItem: UIBarButtonItem(image: #imageLiteral(resourceName: "home3").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleHomeButton)))
+        setNavigationBarItems(title: "Detailed Statement", leftNavigationItem: "HamburgerButton", rightNavigationItem: "home3")
 
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Lato-Bold", size: 18)!, NSAttributedString.Key.foregroundColor: UIColor.black]
     }
-
-
-    @objc func handleHamburgerButton() {
-        print("HamburgerButton button pressed")
-    }
-
-    @objc func handleHomeButton() {
-        print("Hiding menu...")
-        
-    }
-
 
 //    required init?(coder aDecoder: NSCoder) {
 //        fatalError("init(coder:) has not been implemented")

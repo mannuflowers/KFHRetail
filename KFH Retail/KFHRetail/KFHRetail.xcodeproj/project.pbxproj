@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04029A9029709BC70088BD3B /* StatementHeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04029A8F29709BC70088BD3B /* StatementHeaderCollectionView.swift */; };
 		042DD89529631153004FE050 /* CardStatementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042DD89429631153004FE050 /* CardStatementController.swift */; };
 		042DD89729631346004FE050 /* CardStatementHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042DD89629631346004FE050 /* CardStatementHeaderCell.swift */; };
 		042DD899296313A8004FE050 /* HeaderHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042DD898296313A8004FE050 /* HeaderHorizontalController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04029A8F29709BC70088BD3B /* StatementHeaderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementHeaderCollectionView.swift; sourceTree = "<group>"; };
 		042DD89429631153004FE050 /* CardStatementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStatementController.swift; sourceTree = "<group>"; };
 		042DD89629631346004FE050 /* CardStatementHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStatementHeaderCell.swift; sourceTree = "<group>"; };
 		042DD898296313A8004FE050 /* HeaderHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderHorizontalController.swift; sourceTree = "<group>"; };
@@ -132,19 +134,20 @@
 				04941CA3295897E8006EAB7A /* MenuHeader.swift */,
 				04AE2AC8295980C400015C80 /* MenuItemCell.swift */,
 				0468AAC1296573170095ABEC /* extensions.swift */,
+				04029A8F29709BC70088BD3B /* StatementHeaderCollectionView.swift */,
 				046779F72952D83E009E54E6 /* Info.plist */,
 				04F03B852965844D00F4BD16 /* Lato-Regular.ttf */,
 				04F03B912965FD9100F4BD16 /* ocraextended.ttf */,
 				04F03B902965FD8C00F4BD16 /* OCRAEXT.TTF */,
 				04F03B842965844C00F4BD16 /* Lato-Bold.ttf */,
-				04713A332966BF7D00046513 /* Completed */,
 				049768D9296AEF59002D91E4 /* QuickTableView.swift */,
-				048DB246296EF78B00BF742F /* StatementHeader.swift */,
-				0489779E296BEB10001A37D7 /* myCollectionViewCell.swift */,
+				04713A332966BF7D00046513 /* Completed */,
 				048977A2296BEC7F001A37D7 /* myViewController.swift */,
 				0489779C296B16FE001A37D7 /* TableViewCell.swift */,
+				0489779E296BEB10001A37D7 /* myCollectionViewCell.swift */,
 				048DB242296E624900BF742F /* statementCollectionViewCell.swift */,
 				048DB244296E64E700BF742F /* statementTableViewCell.swift */,
+				048DB246296EF78B00BF742F /* StatementHeader.swift */,
 			);
 			path = KFHRetail;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				04677A022952F90C009E54E6 /* myAccountsController.swift in Sources */,
 				0489779D296B16FE001A37D7 /* TableViewCell.swift in Sources */,
 				04713A352966F4A900046513 /* QuickStatementController.swift in Sources */,
+				04029A9029709BC70088BD3B /* StatementHeaderCollectionView.swift in Sources */,
 				0468AAC2296573170095ABEC /* extensions.swift in Sources */,
 				04F583C6295364E70027855D /* SlideOutMenu.swift in Sources */,
 				04677A042952F968009E54E6 /* AccountsCell.swift in Sources */,

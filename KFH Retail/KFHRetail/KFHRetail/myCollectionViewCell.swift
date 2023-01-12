@@ -30,8 +30,8 @@ class myCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.addSubview(topLabel)
         contentView.addSubview(bottomLabel)
-                topLabel.anchor(top: topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 2, paddingLeft: 70, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
-                bottomLabel.anchor(top: topLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: -3, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 45, height: 20)
+        topLabel.anchor(top: contentView.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: -9, paddingLeft: 2, paddingBottom: 0, paddingRight: 2, width: 54, height: 30)
+                bottomLabel.anchor(top: topLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: -3, paddingLeft: 2, paddingBottom: 0, paddingRight: 2, width: 54, height: 20)
     }
     
     required init?(coder: NSCoder) {
@@ -48,6 +48,8 @@ class myCollectionViewCell: UICollectionViewCell {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
     }
+    
+    
     
     public func configure(with model: CollectionTableCellModel) {
         topLabel.text = model.TopTitle

@@ -155,21 +155,10 @@ class DetailsController: BaseViewController, UICollectionViewDelegateFlowLayout 
         view.addSubview(AccountBalance)
         AccountBalance.anchor(top: stackView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 24, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 67)
         
-        
-        setNavigationBarItems(title: "Details", leftNavigationItem: UIBarButtonItem(image: #imageLiteral(resourceName: "Vector (7)").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleHamburgerButton)), rightNavigationItem: UIBarButtonItem(image: #imageLiteral(resourceName: "Light").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleHomeButton)))
+        setNavigationBarItems(title: "Details", leftNavigationItem: "Vector (7)", rightNavigationItem: "Light")
         
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Lato-Bold", size: 18)!, NSAttributedString.Key.foregroundColor: UIColor.black]
 
-    }
-    
-    
-    
-    @objc open func handleHamburgerButton() {
-        print("HamburgerButton button pressed")
-    }
-    
-    @objc open func handleHomeButton() {
-        print("Hiding menu...")
     }
     
 }
