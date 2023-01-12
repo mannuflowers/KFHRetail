@@ -16,14 +16,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-           // window.rootViewController = UINavigationController(rootViewController: DetailedStatementController())
+            //window.rootViewController = UINavigationController(rootViewController: DetailedStatementController())
             //window.rootViewController = UINavigationController(rootViewController: DetailsController())
-           // window.rootViewController = UINavigationController(rootViewController: QuickStatementController())
-            window.rootViewController = UINavigationController(rootViewController: myViewController())
-            //  window.rootViewController = myViewController()
+            window.rootViewController = UINavigationController(rootViewController: QuickStatementController())
+            //window.rootViewController = UINavigationController(rootViewController: CardStatementController())
             //window.rootViewController = UINavigationController(rootViewController: myAccountsController())
            // window.rootViewController = UINavigationController(rootViewController: BaseViewController())
-           // window.rootViewController = UINavigationController(rootViewController: CardsController())
+            //window.rootViewController = UINavigationController(rootViewController: CardsController())
          
 
             self.window = window
