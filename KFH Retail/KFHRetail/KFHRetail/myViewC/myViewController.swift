@@ -33,9 +33,10 @@ class myViewController: BaseViewController, UITableViewDelegate, UITableViewData
     private let table: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+//        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         table.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.identifier)
         table.register(statementTableViewCell.self, forCellReuseIdentifier: statementTableViewCell.identifier)
+        table.register(tableviewcell2.self, forCellReuseIdentifier: tableviewcell2.identifier)
         return table
     }()
     
@@ -59,11 +60,12 @@ class myViewController: BaseViewController, UITableViewDelegate, UITableViewData
     }
     
     private func setUpModels() {
-        models.append(.list(models:[
+        models.append(.list(model1:[
             ListCellModel(LeftTitle: "Account Type", RightTitle: "Investment Saving Account"),
             ListCellModel(LeftTitle: "Total Balance", RightTitle: "1,150.000 KWD"),
             ListCellModel(LeftTitle: "Available Balance", RightTitle: "1,150.000 KWD"),
-            ListCellModel(LeftTitle: "Hold Amount", RightTitle: "0.000 KWD")]))
+            ListCellModel(LeftTitle: "Hold Amount", RightTitle: "0.000 KWD"),
+        ]))
         
         models.append(.collectionView(models: [
             CollectionTableCellModel(TopTitle: "7",BottomTitle: "Days"),
@@ -77,10 +79,10 @@ class myViewController: BaseViewController, UITableViewDelegate, UITableViewData
         
         models.append(.statement(models: [
             StatementTableCellModel(dateTitle: "2020-11-12", kindTitle: "Other", toTitle: "Swift Chgs - Int-003-8314791", costTitle: "0.450 KWD", imageView: "Vector (8)",costColor: .maroonRed),
-            StatementTableCellModel(dateTitle: "2020-11-12", kindTitle: "Other", toTitle: "Funt Transfer - Internet", costTitle: "0.450 KWD", imageView: "Vector (8)",costColor: .floroGreen),
-            StatementTableCellModel(dateTitle: "2020-11-12", kindTitle: "Other", toTitle: "Funt Transfer - Internet", costTitle: "0.450 KWD", imageView: "Vector (8)",costColor: .floroGreen),
-            StatementTableCellModel(dateTitle: "2020-11-12", kindTitle: "Other", toTitle: "Funt Transfer - Internet", costTitle: "0.450 KWD", imageView: "Vector (8)",costColor: .maroonRed),
-            StatementTableCellModel(dateTitle: "2020-11-12", kindTitle: "Other", toTitle: "Funt Transfer - Internet", costTitle: "0.450 KWD", imageView: "Vector (8)",costColor: .maroonRed)
+            StatementTableCellModel(dateTitle: "2020-11-12", kindTitle: "Other", toTitle: "Swift Chgs - Int-003-8314791", costTitle: "0.450 KWD", imageView: "Vector (8)",costColor: .maroonRed),
+            StatementTableCellModel(dateTitle: "2020-11-12", kindTitle: "Other", toTitle: "Swift Chgs - Int-003-8314791", costTitle: "0.450 KWD", imageView: "Vector (8)",costColor: .maroonRed),
+            StatementTableCellModel(dateTitle: "2020-11-12", kindTitle: "Other", toTitle: "Swift Chgs - Int-003-8314791", costTitle: "0.450 KWD", imageView: "Vector (8)",costColor: .maroonRed),
+            StatementTableCellModel(dateTitle: "2020-11-12", kindTitle: "Other", toTitle: "Swift Chgs - Int-003-8314791", costTitle: "0.450 KWD", imageView: "Vector (8)",costColor: .maroonRed),
         ]))
     }
     
@@ -91,30 +93,30 @@ class myViewController: BaseViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch models[section] {
         case .collectionView(_): return 1
-        case .list(let models): return models.count
+        case .list(let model1): return model1.count
         case .statement(let models):  return models.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch models[indexPath.section] {
-        case .list(let models):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell" ,for: indexPath) 
-            let model = models[indexPath.row]
+        case .list(let model1):
+            let cell = tableView.dequeueReusableCell(withIdentifier: tableviewcell2.identifier, for: indexPath) as! tableviewcell2
+            cell.configure(with: model1)
+            return cell
             
-            let atTT = NSMutableAttributedString(string: model.LeftTitle, attributes: [NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 16), NSAttributedString.Key.foregroundColor : UIColor.fontGray])
-            atTT.append(NSAttributedString(string: "            "))
-            atTT.append(NSAttributedString(string: model.RightTitle, attributes: [NSAttributedString.Key.font: UIFont(name: "Lato-Bold", size: 16), NSAttributedString.Key.foregroundColor : UIColor.someGray]))
-            
-            cell.textLabel?.attributedText = atTT
-            cell.textLabel?.textAlignment = .left
+//            let model = models[indexPath.row]
+//            let atTT = NSMutableAttributedString(string: model.LeftTitle, attributes: [NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 16), NSAttributedString.Key.foregroundColor : UIColor.fontGray])
+//            atTT.append(NSAttributedString(string: "            "))
+//            atTT.append(NSAttributedString(string: model.RightTitle, attributes: [NSAttributedString.Key.font: UIFont(name: "Lato-Bold", size: 16), NSAttributedString.Key.foregroundColor : UIColor.someGray]))
+//            cell.textLabel?.attributedText = atTT
+//            cell.textLabel?.textAlignment = .left
             
 //            cell.rightText.text = model.RightTitle
 //            cell.rightText.textAlignment = .right
 //            cell.leftText.text = model.LeftTitle
 //            cell.leftText.textAlignment = .left
-            
-            return cell
+//            return cell
         case .collectionView(let models):
             let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
             cell.configure(with: models)
@@ -140,6 +142,11 @@ class myViewController: BaseViewController, UITableViewDelegate, UITableViewData
         case .statement:
             return 97
         }
+    }
+    
+    override func handleRightNavigationItem() {
+        let vc = CardsController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

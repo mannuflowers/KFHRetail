@@ -149,6 +149,7 @@ class DetailsController: BaseViewController, UICollectionViewDelegateFlowLayout 
         let stackView = UIStackView(arrangedSubviews: [CreditAccountNumber,CreditAccountHolderNumber,TransactionType,DebitAccountNumber,DebitAccountHolderNumber,DTransactionType])
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
+        contentView.addSubview(whiteView)
         view.addSubview(stackView)
         stackView.anchor(top: whiteView.bottomAnchor, left:  nil, bottom: nil, right: nil, paddingTop: 24, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 404)
 
@@ -161,7 +162,12 @@ class DetailsController: BaseViewController, UICollectionViewDelegateFlowLayout 
 
     }
     
+    override func handleRightNavigationItem() {
+        let vc = myViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
+
 
 
 

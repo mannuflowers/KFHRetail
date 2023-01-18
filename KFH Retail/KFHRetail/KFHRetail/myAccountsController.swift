@@ -7,16 +7,16 @@
 
 import UIKit
 
-class myAccountsController: UICollectionViewController, UICollectionViewDelegateFlowLayout{
+class myAccountsController: BaseViewController, UICollectionViewDelegateFlowLayout{
 
     let cellId = "cellId"
-    let whiteView: UILabel = {
-        let view = UILabel()
-        view.backgroundColor = .white
-        view.textAlignment = .center
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
-        return view
+    
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: view.frame.width, height: view.frame.height) //this is for cell size
+        let cvc = UICollectionView(frame: CGRect(origin: CGPointMake(0, 100), size: CGSize(width: view.frame.width, height: view.frame.height - 100)), collectionViewLayout: layout)
+        return cvc
     }()
     
    
@@ -44,9 +44,9 @@ class myAccountsController: UICollectionViewController, UICollectionViewDelegate
 
 
         view.backgroundColor = .systemPink
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "home3").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleHomeButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "home3").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleRightNavigationItem))
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "HamburgerButton").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleHamburgerButton))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "HamburgerButton").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLeftNavigationItem))
 
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
         view.addGestureRecognizer(panGesture)
@@ -78,13 +78,13 @@ class myAccountsController: UICollectionViewController, UICollectionViewDelegate
         })
     }
     
-    @objc func handleHamburgerButton() {
+    override func handleRightNavigationItem() {
         isMenuOpened = true
         print("HamburgerButton button pressed")
         performAnimations(transform: CGAffineTransform(translationX: 305, y: 0))
     }
 
-    @objc func handleHomeButton() {
+    override func handleLeftNavigationItem() {
         isMenuOpened = false
         print("Hiding menu...")
         performAnimations(transform: .identity)
@@ -113,30 +113,30 @@ class myAccountsController: UICollectionViewController, UICollectionViewDelegate
             if isMenuOpened {
                 
                 if abs(velocity.x) > 500 {
-                    handleHomeButton()
+                    handleRightNavigationItem()
                     return
                 }
                 
                 if abs(pull.x) < 305 / 2 {
-                    handleHamburgerButton()
+                    handleLeftNavigationItem()
                 }
                 else {
-                    handleHomeButton()
+                    handleRightNavigationItem()
                 }
             }
             
             else {
                 
                 if velocity.x > 500 {
-                    handleHamburgerButton()
+                    handleLeftNavigationItem()
                     return
                 }
                 
                 if pull.x < 305/2 {
-                    handleHomeButton()
+                    handleRightNavigationItem()
                 }
                 else {
-                    handleHamburgerButton()
+                    handleLeftNavigationItem()
                 }
             }
             
@@ -144,12 +144,12 @@ class myAccountsController: UICollectionViewController, UICollectionViewDelegate
     }
     
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
 
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    private func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AccountsCell
         return cell
     }
@@ -166,13 +166,13 @@ class myAccountsController: UICollectionViewController, UICollectionViewDelegate
         return.init(top: 32, left: 0, bottom: 32, right: 0)
     }
 
-        init() {
-            super.init(collectionViewLayout: UICollectionViewFlowLayout())
-        }
+//        init() {
+//            super.init(collectionViewLayout: UICollectionViewFlowLayout())
+//        }
 
-        required init?(coder aDecoder: NSCoder) {
-           fatalError("init(coder:) has not been implemented")
-      }
+//        required init?(coder aDecoder: NSCoder) {
+//           fatalError("init(coder:) has not been implemented")
+//      }
 
    }
 

@@ -43,15 +43,15 @@ class BaseViewController: UIViewController {
                 
         navigationItem.title = title
        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: leftNavigationItem)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleHamburgerButton))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: rightNavigationItem)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleHomeButton))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: leftNavigationItem)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLeftNavigationItem))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: rightNavigationItem)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleRightNavigationItem))
     }
     
-    @objc open func handleHamburgerButton() {
+    @objc open func handleLeftNavigationItem() {
         print("HamburgerButton button pressed")
     }
     
-    @objc open func handleHomeButton() {
+    @objc open func handleRightNavigationItem() {
         print("Hiding menu...")
     }
 }

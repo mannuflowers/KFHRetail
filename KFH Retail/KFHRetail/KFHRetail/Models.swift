@@ -8,7 +8,7 @@
 import UIKit
 
 enum CellModel{
-    case list(models: [ListCellModel])
+    case list(model1: [ListCellModel])
     case collectionView(models: [CollectionTableCellModel])
     case statement(models: [StatementTableCellModel])
     

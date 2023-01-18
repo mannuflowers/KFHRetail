@@ -173,7 +173,7 @@ class DetailedStatementController: BaseViewController, UICollectionViewDelegateF
 //        seperator.backgroundColor = .black
 //        seperator.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         
-        
+        contentView.addSubview(whiteView)
         let stackView = UIStackView(arrangedSubviews: [accountStackView,FromStackView,ToStackView,CriteriaStackView,DescriptionStackView,DebitStackView,CreditStackView])
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
@@ -181,16 +181,12 @@ class DetailedStatementController: BaseViewController, UICollectionViewDelegateF
         stackView.anchor(top: whiteView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 30, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 350)
         
         view.addSubview(SubmitLabel)
-        SubmitLabel.anchor(top: stackView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 30, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 50)
+        //SubmitLabel.anchor(top: stackView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 30, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 50)
         
         setNavigationBarItems(title: "Detailed Statement", leftNavigationItem: "HamburgerButton", rightNavigationItem: "home3")
 
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Lato-Bold", size: 18)!, NSAttributedString.Key.foregroundColor: UIColor.black]
     }
-
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
 
 }
 

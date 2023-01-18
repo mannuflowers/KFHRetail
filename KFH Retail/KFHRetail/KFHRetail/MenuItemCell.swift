@@ -28,9 +28,6 @@ class MenuItemCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 5)
         label.textColor = .white
-        //label.preferredMaxLayoutWidth = 6
-        label.adjustsFontSizeToFitWidth
-        label.numberOfLines = 2
         return label
     }()
     
@@ -46,7 +43,6 @@ class MenuItemCell: UITableViewCell {
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        //titleLabel.text = "menu"
         titleLabel.textAlignment = .left
         titleLabel.numberOfLines = 2
         

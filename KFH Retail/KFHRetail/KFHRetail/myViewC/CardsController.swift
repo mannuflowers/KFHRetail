@@ -31,7 +31,6 @@ class CardsController: BaseViewController, UICollectionViewDelegate, UICollectio
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        //let cvc = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: view.frame.width, height: view.frame.height) //this is for cell size
         let cvc = UICollectionView(frame: CGRect(origin: CGPointMake(0, 100), size: CGSize(width: view.frame.width, height: view.frame.height - 100)), collectionViewLayout: layout)
@@ -45,14 +44,14 @@ class CardsController: BaseViewController, UICollectionViewDelegate, UICollectio
         collectionView.backgroundColor = UIColor.customLightGray
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.frame = CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.height - 100)
+//        collectionView.frame = CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.height - 100)
         contentView.addSubview(collectionView)
         self.setNavigationBarItems(title: "My Cards", leftNavigationItem: "HamburgerButton", rightNavigationItem: "home3")
     }
     
     
     
-    override func handleHamburgerButton() {
+    override func handleLeftNavigationItem() {
         print("HamburgerButton button pressed")
         
         let sheet = UIAlertController()
@@ -79,7 +78,10 @@ class CardsController: BaseViewController, UICollectionViewDelegate, UICollectio
         
     }
     
-    
+    override func handleRightNavigationItem() {
+        let vc = DetailsController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     
     
