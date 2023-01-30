@@ -19,13 +19,10 @@ class myAccountsController: BaseViewController, UICollectionViewDelegateFlowLayo
         return cvc
     }()
     
-   
-
-    override func viewDidLoad() {
+    
+override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-
+   
         collectionView.backgroundColor = UIColor.backgroundGray
         collectionView.register(AccountsCell.self, forCellWithReuseIdentifier: cellId)
 

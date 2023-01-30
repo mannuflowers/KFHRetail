@@ -21,9 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
            // window.rootViewController = UINavigationController(rootViewController: QuickStatementController())
            // window.rootViewController = UINavigationController(rootViewController: myViewController())
             //  window.rootViewController = myViewController()
-           // window.rootViewController = UINavigationController(rootViewController: CardsController())
+            window.rootViewController = UINavigationController(rootViewController: CardsController())
            // window.rootViewController = UINavigationController(rootViewController: BaseViewController())
-           window.rootViewController = UINavigationController(rootViewController: myAccountsController())
+         //  window.rootViewController = UINavigationController(rootViewController: myAccountsController())
          
 
             self.window = window

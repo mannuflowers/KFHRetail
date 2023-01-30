@@ -26,6 +26,7 @@ struct Model {
 //    required init?(coder: NSCoder) {
 //        fatalError("init(coder:) has not been implemented")
 //    }
+//    
 //}
     
 class myViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
@@ -33,10 +34,10 @@ class myViewController: BaseViewController, UITableViewDelegate, UITableViewData
     private let table: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         
-//        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         table.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.identifier)
         table.register(statementTableViewCell.self, forCellReuseIdentifier: statementTableViewCell.identifier)
-        table.register(tableviewcell2.self, forCellReuseIdentifier: tableviewcell2.identifier)
+      //  table.register(tableviewcell2.self, forCellReuseIdentifier: tableviewcell2.identifier)
         return table
     }()
     
@@ -60,7 +61,7 @@ class myViewController: BaseViewController, UITableViewDelegate, UITableViewData
     }
     
     private func setUpModels() {
-        models.append(.list(model1:[
+        models.append(.list(models:[
             ListCellModel(LeftTitle: "Account Type", RightTitle: "Investment Saving Account"),
             ListCellModel(LeftTitle: "Total Balance", RightTitle: "1,150.000 KWD"),
             ListCellModel(LeftTitle: "Available Balance", RightTitle: "1,150.000 KWD"),
@@ -93,30 +94,30 @@ class myViewController: BaseViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch models[section] {
         case .collectionView(_): return 1
-        case .list(let model1): return model1.count
+        case .list(let model): return model.count
         case .statement(let models):  return models.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch models[indexPath.section] {
-        case .list(let model1):
-            let cell = tableView.dequeueReusableCell(withIdentifier: tableviewcell2.identifier, for: indexPath) as! tableviewcell2
-            cell.configure(with: model1)
-            return cell
-            
-//            let model = models[indexPath.row]
-//            let atTT = NSMutableAttributedString(string: model.LeftTitle, attributes: [NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 16), NSAttributedString.Key.foregroundColor : UIColor.fontGray])
-//            atTT.append(NSAttributedString(string: "            "))
-//            atTT.append(NSAttributedString(string: model.RightTitle, attributes: [NSAttributedString.Key.font: UIFont(name: "Lato-Bold", size: 16), NSAttributedString.Key.foregroundColor : UIColor.someGray]))
-//            cell.textLabel?.attributedText = atTT
-//            cell.textLabel?.textAlignment = .left
-            
+        case .list(let models):
+//            let cell = tableView.dequeueReusableCell(withIdentifier: tableviewcell2.identifier, for: indexPath) as! tableviewcell2
+//            cell.configure(with: model1)
+//            return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            let model = models[indexPath.row]
+            let atTT = NSMutableAttributedString(string: model.LeftTitle, attributes: [NSAttributedString.Key.font: UIFont(name: "Lato-Regular", size: 16), NSAttributedString.Key.foregroundColor : UIColor.fontGray])
+            atTT.append(NSAttributedString(string: "            "))
+            atTT.append(NSAttributedString(string: model.RightTitle, attributes: [NSAttributedString.Key.font: UIFont(name: "Lato-Bold", size: 16), NSAttributedString.Key.foregroundColor : UIColor.someGray]))
+            cell.textLabel?.attributedText = atTT
+            cell.textLabel?.textAlignment = .left
+
 //            cell.rightText.text = model.RightTitle
 //            cell.rightText.textAlignment = .right
 //            cell.leftText.text = model.LeftTitle
 //            cell.leftText.textAlignment = .left
-//            return cell
+            return cell
         case .collectionView(let models):
             let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
             cell.configure(with: models)
